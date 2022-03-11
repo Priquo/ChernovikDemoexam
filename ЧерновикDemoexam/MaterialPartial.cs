@@ -25,15 +25,7 @@ namespace ЧерновикDemoexam
                 return suppliers;
             }
         }
-        public string MaterialTypeText
-        {
-            get
-            {
-                string type = "";
-                type = MaterialType.Title.ToString();
-                return type;
-            }
-        }
+        public string MaterialTypeText { get => MaterialType.Title.ToString(); }
         public string RealImagePath
         {
             get
@@ -43,5 +35,7 @@ namespace ЧерновикDemoexam
                 return path;
             }
         }
+        public bool CountLessInStock { get => CountInStock < MinCount; }
+        public bool CountMoreInStock { get => CountInStock > MinCount*3; }
     }
 }

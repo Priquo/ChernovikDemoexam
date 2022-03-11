@@ -11,7 +11,12 @@
     <Page.Resources>
         <Style TargetType="StackPanel" x:Key="styleBackgroundColor">
             <Style.Triggers>
-
+                <DataTrigger Binding="{Binding CountLessInStock}" Value="True">
+                    <Setter Property="Background" Value="#f19292"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding CountMoreInStock}" Value="True">
+                    <Setter Property="Background" Value="#ffba01"/>
+                </DataTrigger>
             </Style.Triggers>
         </Style>
         <Style TargetType="TextBlock" x:Key="styleMargin">
@@ -19,11 +24,11 @@
             <Setter Property="Margin" Value="5 0"/>            
         </Style>
         <DataTemplate x:Key="ItemsTemplate">
-            <Border>
-                <StackPanel Orientation="Horizontal" MinWidth="200px" Margin="0 20">
+            <Border BorderThickness="1px" BorderBrush="Black">
+                <StackPanel Orientation="Horizontal" MinWidth="200px" Margin="10 20">
                     <Image Source="{Binding RealImagePath}" MinHeight="50px" Width="100px" Margin="0 0 10 0"/>
                     <StackPanel Orientation="Vertical">
-                        <StackPanel Orientation="Horizontal" Margin="0 3">
+                        <StackPanel Style="{StaticResource styleBackgroundColor}" Orientation="Horizontal" Margin="0 3">
                             <TextBlock Text="{Binding MaterialTypeText}" FontSize="14" Width="70"/>
                             <TextBlock Text="|" Margin="10 0" FontSize="14"/>
                             <TextBlock Text="{Binding Title}" FontSize="14" Width="200"/>
@@ -31,7 +36,7 @@
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Минимальное количество: "/>
-                            <TextBlock Text="{Binding CountInPack}"/>
+                            <TextBlock Text="{Binding MinCount}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="Поставщики: " FontWeight="DemiBold"/>
@@ -49,13 +54,14 @@
             <RowDefinition Height="388*"/>
             <RowDefinition Height="23*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <TextBox x:Name="textBoxSearch" TextChanged="Filter" Height="25" Width="250" Margin="10 0" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+            <TextBox x:Name="textBoxSearch" TextChanged="Filter" Height="25" Width="150" Margin="10 0" HorizontalAlignment="Center"/>
             <ComboBox Name="comboBoxSorting" Height="25" Width="150" SelectionChanged="Filter"/>
-            <ComboBox Name="comboBoxFilter" Height="25" Width="150" SelectionChanged="Filter" Margin="10 0"/>
-            <TextBlock x:Name="textBlockCountPagesOnList" Margin="10 0" Visibility="Hidden"/>
+            <ComboBox Name="comboBoxFilter" Height="25" Width="100" SelectionChanged="Filter" Margin="10 0"/>
+            <Button x:Name="buttChangeMinCount" Height="25" Width="150" Content="Изменить мин. кол-во" Click="buttChangeMinCount_Click"/>
+            <TextBlock x:Name="textBlockCountPagesOnList" Margin="10 0"/>
         </StackPanel>
-        <ListBox Grid.Row="1" x:Name="listBoxMaterials" ItemTemplate="{StaticResource ResourceKey=ItemsTemplate}" />
+        <ListBox Grid.Row="1" x:Name="listBoxMaterials" ItemTemplate="{StaticResource ResourceKey=ItemsTemplate}" SelectionMode="Multiple"/>
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20 0">
             <TextBlock x:Name="buttBack" Text="&lt;" Style="{StaticResource styleMargin}" MouseDown="buttBack_MouseDown"/>
             <TextBlock x:Name="butt1" Text="{Binding Path=PageNumber[0], StringFormat={}{0,3}}" FontWeight="{Binding Path=Bold[0]}" Style="{StaticResource styleMargin}" MouseDown="buttBack_MouseDown"/>

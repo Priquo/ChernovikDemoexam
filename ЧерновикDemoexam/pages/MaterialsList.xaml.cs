@@ -28,11 +28,11 @@ namespace ЧерновикDemoexam.pages
         List<string> sort = new List<string> { "По умолчанию", "Наименование", "Остаток на складе", "Стоимость" };
         List<string> filter = new List<string> { "Все типы" };
         PageChanger pageChanger = new PageChanger();
-        int skipped = 15;
         public MaterialsList()
         {
             InitializeComponent();
             listBoxMaterials.ItemsSource = materials;
+
             comboBoxSorting.ItemsSource = sort;
             comboBoxSorting.SelectedIndex = 0;
             comboBoxFilter.ItemsSource = filter;
@@ -41,11 +41,14 @@ namespace ЧерновикDemoexam.pages
             {
                 filter.Add(type.Title);
             }
+
             DataContext = pageChanger;
             pageChanger.CountAllRows = materials.Count;
             pageChanger.CountPage = 15;
+
             listBoxMaterials.ItemsSource = materialsForFilter.Skip(pageChanger.CountPage * pageChanger.CurrentPage - pageChanger.CountPage).Take(pageChanger.CountPage).ToList();
-            textBlockCountPagesOnList.Text = skipped.ToString() + " из " + materialsForFilter.Count.ToString();
+                        
+            textBlockCountPagesOnList.Text = listBoxMaterials.Items.Count + " из " + materialsForFilter.Count.ToString();
         }
 
         private void Filter(object sender, RoutedEventArgs e)
@@ -92,11 +95,7 @@ namespace ЧерновикDemoexam.pages
             }            
             listBoxMaterials.ItemsSource = materialsForFilter;
             pageChanger.CountAllRows = materialsForFilter.Count;
-            if (materialsForFilter.Count > 15)
-                skipped = 15;
-            else
-                skipped = materialsForFilter.Count;
-            textBlockCountPagesOnList.Text = skipped.ToString() + " из " + materialsForFilter.Count.ToString();
+            textBlockCountPagesOnList.Text = listBoxMaterials.Items.Count + " из " + materialsForFilter.Count.ToString();
         }
 
         private void buttBack_MouseDown(object sender, MouseButtonEventArgs e)
@@ -108,17 +107,34 @@ namespace ЧерновикDemoexam.pages
                     pageChanger.CurrentPage++;
                     break;
                 case "buttBack":
-                    pageChanger.CurrentPage--;                    ;
+                    pageChanger.CurrentPage--;
                     break;
                 default:
                     pageChanger.CurrentPage = Convert.ToInt32(block.Text);
                     break;                
             }
-            skipped = pageChanger.CountPage * pageChanger.CurrentPage - pageChanger.CountPage;
-            if (skipped > materialsForFilter.Count)
-                skipped = materialsForFilter.Count;
-            textBlockCountPagesOnList.Text = skipped.ToString() + " из " + materialsForFilter.Count.ToString();
+
             listBoxMaterials.ItemsSource = materialsForFilter.Skip(pageChanger.CountPage * pageChanger.CurrentPage - pageChanger.CountPage).Take(pageChanger.CountPage).ToList();
+            textBlockCountPagesOnList.Text = listBoxMaterials.Items.Count + " из " + materialsForFilter.Count.ToString();
+        }
+
+        private void buttChangeMinCount_Click(object sender, RoutedEventArgs e)
+        {
+            if (listBoxMaterials.SelectedItems.Count != 0)
+            {
+                List<Material> selectedMaterials = new List<Material>();
+                foreach (var item in listBoxMaterials.SelectedItems)
+                {
+                    selectedMaterials.Add((Material)item);
+                }
+                WindowChangeMinCounInPack window = new WindowChangeMinCounInPack(selectedMaterials);
+                window.ShowDialog();
+                listBoxMaterials.Items.Refresh();
+            }
+            else
+            {
+                MessageBox.Show("Выберите элементы для редактирования");
+            }
         }
     }
 }

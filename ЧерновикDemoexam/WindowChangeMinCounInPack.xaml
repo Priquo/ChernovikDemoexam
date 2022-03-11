@@ -1,0 +1,19 @@
+﻿<Window x:Class="ЧерновикDemoexam.WindowChangeMinCounInPack"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ЧерновикDemoexam"
+        mc:Ignorable="d"
+        Title="Изменение мин. количества в пачке" Height="200" Width="300">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <TextBlock Text="Введите новое значение минимального количества" VerticalAlignment="Center" Margin="0 10 0 0" TextWrapping="Wrap"/>
+            <TextBox x:Name="textBoxNewCount" Margin="0 20 0 0"/>
+            <StackPanel Orientation="Horizontal" Height="20" Margin="0 20">
+                <Button x:Name="buttSave" Click="buttSave_Click" Width="100" Content="Сохранить" Margin="0 0 80 0"/>
+                <Button x:Name="buttBack" Click="buttBack_Click" Width="100" Content="Назад"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
