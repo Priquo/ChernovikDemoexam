@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ЧерновикDemoexam.FunctionalClasses;
 using ЧерновикDemoexam.UIclasses;
+using ЧерновикDemoexam.windows;
 
 namespace ЧерновикDemoexam.pages
 {
@@ -135,6 +136,23 @@ namespace ЧерновикDemoexam.pages
             {
                 MessageBox.Show("Выберите элементы для редактирования");
             }
+        }
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (listBoxMaterials.SelectedItems.Count > 1)
+            {
+                MessageBox.Show("Выберите один материал для редактирования");
+            }
+            else if (e.ClickCount >= 1 && Application.Current.Windows.Count < 3 && listBoxMaterials.SelectedItem != null)
+            {
+                WindowEditMaterial windowEdit = new WindowEditMaterial((Material)listBoxMaterials.SelectedItem);
+                windowEdit.Show();
+                listBoxMaterials.Items.Refresh();
+            }
+            else if (Application.Current.Windows.Count > 2)
+                MessageBox.Show("Закройте другие окна редактирования");
+            
         }
     }
 }

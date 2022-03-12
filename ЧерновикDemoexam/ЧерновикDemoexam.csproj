@@ -116,8 +116,12 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>BaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="WindowChangeMinCounInPack.xaml.cs">
+    <Compile Include="UIclasses\MaterialLoader.cs" />
+    <Compile Include="windows\WindowChangeMinCounInPack.xaml.cs">
       <DependentUpon>WindowChangeMinCounInPack.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="windows\WindowEditMaterial.xaml.cs">
+      <DependentUpon>WindowEditMaterial.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -147,7 +151,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WindowChangeMinCounInPack.xaml">
+    <Page Include="windows\WindowChangeMinCounInPack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="windows\WindowEditMaterial.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

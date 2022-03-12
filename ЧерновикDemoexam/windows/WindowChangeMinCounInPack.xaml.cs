@@ -40,6 +40,7 @@ namespace ЧерновикDemoexam
                 BaseConnecter.BaseConnect.Material.Where(x => x.ID == material.ID).FirstOrDefault().MinCount = Convert.ToDouble(textBoxNewCount.Text);
             }
             BaseConnecter.BaseConnect.SaveChanges();
+            MessageBox.Show("Данные успешно сохранены!");
         }
 
         private void buttBack_Click(object sender, RoutedEventArgs e)

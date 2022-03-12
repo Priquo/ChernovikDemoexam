@@ -25,7 +25,7 @@
         </Style>
         <DataTemplate x:Key="ItemsTemplate">
             <Border BorderThickness="1px" BorderBrush="Black">
-                <StackPanel Orientation="Horizontal" MinWidth="200px" Margin="10 20">
+                <StackPanel Orientation="Horizontal" MinWidth="200px" Margin="10 20" MouseDown="StackPanel_MouseDown">
                     <Image Source="{Binding RealImagePath}" MinHeight="50px" Width="100px" Margin="0 0 10 0"/>
                     <StackPanel Orientation="Vertical">
                         <StackPanel Style="{StaticResource styleBackgroundColor}" Orientation="Horizontal" Margin="0 3">

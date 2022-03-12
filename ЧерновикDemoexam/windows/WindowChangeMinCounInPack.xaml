@@ -5,9 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ЧерновикDemoexam"
         mc:Ignorable="d"
-        Title="Изменение мин. количества в пачке" Height="200" Width="300">
+        Title="Изменение мин. количества" Height="200" Width="300">
     <Grid>
-        <StackPanel Orientation="Vertical">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="68*"/>
+            <RowDefinition Height="351*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="68*"/>
+            <ColumnDefinition Width="500*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0" Grid.Row="0" Source="/images/Черновик.png" MinHeight="10px" MinWidth="10px" Stretch="Uniform"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Черновик" VerticalAlignment="Center" FontSize="20"/>
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="2">
             <TextBlock Text="Введите новое значение минимального количества" VerticalAlignment="Center" Margin="0 10 0 0" TextWrapping="Wrap"/>
             <TextBox x:Name="textBoxNewCount" Margin="0 20 0 0"/>
             <StackPanel Orientation="Horizontal" Height="20" Margin="0 20">

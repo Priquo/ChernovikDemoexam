@@ -1,0 +1,69 @@
+﻿<Window x:Class="ЧерновикDemoexam.windows.WindowEditMaterial"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ЧерновикDemoexam.windows"
+        mc:Ignorable="d"
+        Title="WindowEditMaterial" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="68*"/>
+            <RowDefinition Height="351*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="68*"/>
+            <ColumnDefinition Width="500*"/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Column="0" Grid.Row="0" Source="/images/Черновик.png" MinHeight="50px" MinWidth="50px" Stretch="Uniform"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Черновик" VerticalAlignment="Center" FontSize="40" Height="72" />
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+            <GroupBox Header="Редактирование информации о материале">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Наименование"/>
+                    <TextBox x:Name="textBoxTitle"/>
+                    <GroupBox Header="Тип материала" HorizontalAlignment="Left">
+                        <ComboBox Name="comboBoxMaterialType" Width="150"/>
+                    </GroupBox>
+                    <TextBlock Text="Количество на складе"/>
+                    <TextBox x:Name="textBoxCoustInStock"/>
+                    <TextBlock Text="Единица измерения"/>
+                    <TextBox x:Name="textBoxUnit"/>
+                    <TextBlock Text="Количество в упаковке"/>
+                    <TextBox x:Name="textBoxCountInPack"/>
+                    <TextBlock Text="Минимальное количество"/>
+                    <TextBox x:Name="textBoxMinCount"/>
+                    <TextBlock Text="Стоимость (за единицу продукции)"/>
+                    <TextBox x:Name="textBoxCost"/>
+                    <GroupBox Header="Изображение">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Name="textBlockImagePath" Text="Путь к картинке"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button x:Name="buttAddNewImage" Content="Добавить новое изображение" Margin="0 0 50 0"/>
+                                <Button x:Name="buttAddImageFromBase" Content="Добавить изображение из базы"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <GroupBox Header="Поставщики">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock x:Name="textBlockSuppliers" Text="Список поставщиков"/>
+                            <StackPanel Orientation="Horizontal">
+                                <ComboBox Name="comboBoxSuppliersList" Width="250"/>
+                                <Button x:Name="buttSortSuppliersListByName" Content="Сортировать по наименованию" Click="buttSortSuppliersListByName_Click" Margin="50 0 0 0"/>
+                                <Button x:Name="buttAddSuppliers" Content="Добавить" Click="EditSuppliersList" Margin="50 0 0 0"/>
+                                <Button x:Name="buttRemoveSuppliers" Content="Удалить" Click="EditSuppliersList" Margin="50 0 0 0"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </GroupBox>
+                    <TextBlock Text="Описание"/>
+                    <TextBox x:Name="textBoxDiscription" TextWrapping="Wrap" Height="150" AcceptsReturn="True"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                        <Button x:Name="buttSave" Content="Сохранить" Margin="0 0 50 0" Click="buttSave_Click"/>
+                        <Button x:Name="buttDelete" Content="Удалить материал" Margin="0 0 50 0" Click="buttDelete_Click"/>
+                        <Button x:Name="buttBack" Content="Назад" Click="buttBack_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </GroupBox>
+        </ScrollViewer>
+    </Grid>
+</Window>

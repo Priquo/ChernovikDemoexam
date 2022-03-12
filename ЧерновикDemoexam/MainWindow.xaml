@@ -17,6 +17,6 @@
         </Grid.ColumnDefinitions>
         <Image Grid.Column="0" Grid.Row="0" Source="/images/Черновик.png" MinHeight="50px" MinWidth="50px" Stretch="Uniform"/>
         <TextBlock Grid.Row="0" Grid.Column="1" Text="Черновик" VerticalAlignment="Center" FontSize="40" Height="72" />
-        <Frame x:Name="frameForPages" Grid.Row="1" Grid.Column="1"/>
+        <Frame x:Name="frameForPages" Grid.Row="1" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>
