@@ -38,15 +38,12 @@
                     <GroupBox Header="Изображение">
                         <StackPanel Orientation="Vertical">
                             <TextBlock x:Name="textBlockImagePath" Text="Путь к картинке"/>
-                            <StackPanel Orientation="Horizontal">
-                                <Button x:Name="buttAddNewImage" Content="Добавить новое изображение" Margin="0 0 50 0"/>
-                                <Button x:Name="buttAddImageFromBase" Content="Добавить изображение из базы"/>
-                            </StackPanel>
+                            <Button x:Name="buttAddNewImage" Content="Добавить новое изображение" Click="buttAddNewImage_Click" />
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Поставщики">
                         <StackPanel Orientation="Vertical">
-                            <TextBlock x:Name="textBlockSuppliers" Text="Список поставщиков"/>
+                            <ListBox x:Name="listBoxSuppliers" Height="100" />
                             <StackPanel Orientation="Horizontal">
                                 <ComboBox Name="comboBoxSuppliersList" Width="250"/>
                                 <Button x:Name="buttSortSuppliersListByName" Content="Сортировать по наименованию" Click="buttSortSuppliersListByName_Click" Margin="50 0 0 0"/>

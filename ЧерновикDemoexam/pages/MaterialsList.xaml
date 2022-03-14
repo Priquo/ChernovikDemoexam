@@ -60,6 +60,7 @@
             <ComboBox Name="comboBoxFilter" Height="25" Width="100" SelectionChanged="Filter" Margin="10 0"/>
             <Button x:Name="buttChangeMinCount" Height="25" Width="150" Content="Изменить мин. кол-во" Click="buttChangeMinCount_Click"/>
             <TextBlock x:Name="textBlockCountPagesOnList" Margin="10 0"/>
+            <Button x:Name="buttAddMaterial" Content="Добавить" Height="25" Click="buttAddMaterial_Click"/>
         </StackPanel>
         <ListBox Grid.Row="1" x:Name="listBoxMaterials" ItemTemplate="{StaticResource ResourceKey=ItemsTemplate}" SelectionMode="Multiple"/>
         <StackPanel Grid.Row="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="20 0">

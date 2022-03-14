@@ -148,11 +148,25 @@ namespace ЧерновикDemoexam.pages
             {
                 WindowEditMaterial windowEdit = new WindowEditMaterial((Material)listBoxMaterials.SelectedItem);
                 windowEdit.Show();
+                materials = BaseConnecter.BaseConnect.Material.ToList();
                 listBoxMaterials.Items.Refresh();
             }
             else if (Application.Current.Windows.Count > 2)
                 MessageBox.Show("Закройте другие окна редактирования");
             
+        }
+
+        private void buttAddMaterial_Click(object sender, RoutedEventArgs e)
+        {
+            if (Application.Current.Windows.Count < 3)
+            {
+                WindowEditMaterial addMaterial = new WindowEditMaterial();
+                addMaterial.Show();
+                materials = BaseConnecter.BaseConnect.Material.ToList();
+                listBoxMaterials.Items.Refresh();
+            }
+            else if (Application.Current.Windows.Count > 2)
+                MessageBox.Show("Закройте другие окна редактирования");
         }
     }
 }
