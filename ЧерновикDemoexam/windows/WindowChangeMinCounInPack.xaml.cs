@@ -38,6 +38,17 @@ namespace ЧерновикDemoexam
             foreach (var material in materials)
             {
                 BaseConnecter.BaseConnect.Material.Where(x => x.ID == material.ID).FirstOrDefault().MinCount = Convert.ToDouble(textBoxNewCount.Text);
+                int materialIDHistory = 1;
+                if (BaseConnecter.BaseConnect.MaterialCountHistory.ToList().Count != 0)
+                    materialIDHistory = BaseConnecter.BaseConnect.MaterialCountHistory.ToList().Count + 1;
+                BaseConnecter.BaseConnect.MaterialCountHistory.Add(new MaterialCountHistory()
+                {
+                    ID = materialIDHistory,
+                    MaterialID = material.ID,
+                    Material = material,
+                    CountValue = Convert.ToDouble(textBoxNewCount.Text),
+                    ChangeDate = DateTime.Now
+                });
             }
             BaseConnecter.BaseConnect.SaveChanges();
             MessageBox.Show("Данные успешно сохранены!");

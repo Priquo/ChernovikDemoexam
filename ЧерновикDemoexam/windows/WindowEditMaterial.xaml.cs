@@ -194,6 +194,7 @@ namespace ЧерновикDemoexam.windows
             if (openFile.ShowDialog() == true)
             {
                 textBlockImagePath.Text = openFile.FileName;
+                material.RealImagePath = openFile.FileName;
             }
         }
     }

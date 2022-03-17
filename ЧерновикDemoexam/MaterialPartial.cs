@@ -34,6 +34,7 @@ namespace ЧерновикDemoexam
                 path +=  Image == "" ? @"\picture.png" : Image.ToString();
                 return path;
             }
+            set => RealImagePath = value;
         }
         public bool CountLessInStock { get => CountInStock < MinCount; }
         public bool CountMoreInStock { get => CountInStock > MinCount*3; }
